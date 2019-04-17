@@ -58,3 +58,21 @@ gitlab_email_enabled: "false"
 gitlab_email_from: "gitlab@example.com"
 gitlab_email_display_name: "Gitlab"
 gitlab_email_reply_to: "gitlab@example.com"
+
+# SAML Integration
+gitlab_omniauth_enabled: true
+gitlab_omniauth_allow_single_sign_on: ['saml']
+gitlab_omniauth_block_auto_created_users': false
+gitlab_omniauth_auto_link_saml_user: true
+gitlab_omniauth_providers: [
+  {
+    name: 'saml',
+    args: {
+             assertion_consumer_service_url: 'https://gitlab-example.com/users/auth/saml/callback',
+             idp_cert_fingerprint: '22:E8:05:49:66:B6:26:46:D7:1A:6D:63:AC:4C:CD:72:A3:9F:83:B5',
+             idp_sso_target_url: 'https://login.company.net/adfs/ls',
+             issuer: 'https://gitlab-example.com/',
+           },
+    label: 'Company Login' # optional label for SAML login button, defaults to "Saml"
+  }
+]
